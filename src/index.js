@@ -2,7 +2,6 @@ const express = require('express')
 require('./db/mongoose')
 const User = require('./models/bst')
 const userRouter = require('./routers/bst')
-require('env-cmd')
 
 const app = express()
 const port = process.env.PORT
