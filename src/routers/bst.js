@@ -63,7 +63,15 @@ router1.patch('/active_new', auth,  async(req, res)=>{
     try{
         const update = active
         req.user.trades.Active.push(update)
+
+        default_lot_size = update.default_lot_size;
+        lot_size = update.lot_size;
+        buy_price = update.buy_price;
+        value_to_be_deducted = default_lot_size*lot_size*buy_price;
+        req.user.balance = req.user.balance - value_to_be_deducted;
+        
         await req.user.save()
+        
         res.send(user)
     }catch(e){
         res.send(e)
