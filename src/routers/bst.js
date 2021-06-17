@@ -80,20 +80,22 @@ router1.patch('/active_new', auth,  async(req, res)=>{
 
 // remove one commodity by selling it 
 router1.patch('/active_close', auth, async(req, res)=>{
-    const id = req.body.order_number
-
+    const active = req.body
     try{
+        const update = active
+        req.user.trades.Active.push(update)
 
-        var element = new Object();
-        element = req.user.trades.Active[id];
-        
-        req.user.trades.Closed.push(element)
-        req.user.trades.Active.splice(id, 1);
+        default_lot_size = update.default_lot_size;
+        lot_size = update.lot_size;
+        buy_price = update.buy_price;
+        value_to_be_deducted = default_lot_size*lot_size*buy_price;
+        req.user.balance = req.user.balance + value_to_be_deducted;
         
         await req.user.save()
-        res.send(req.user)
+        
+        res.send(user)
     }catch(e){
-        res.status(400).send();
+        res.send(e)
     }
 })
 
