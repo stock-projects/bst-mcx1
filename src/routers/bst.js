@@ -58,7 +58,7 @@ router1.get('/users/:name', async(req,res) => {
 })
 
 // add one purchase of commodity
-router1.patch('/active_new', auth,  async(req, res)=>{
+router1.post('/active_new', auth,  async(req, res)=>{
     const active = req.body
     try{
         const update = active
@@ -72,14 +72,14 @@ router1.patch('/active_new', auth,  async(req, res)=>{
         
         await req.user.save()
         
-        res.send(user)
+        res.send("success")
     }catch(e){
         res.send(e)
     }
 })
 
 // remove one commodity by selling it 
-router1.patch('/active_close', auth, async(req, res)=>{
+router1.post('/active_close', auth, async(req, res)=>{
     const active = req.body
     try{
         const update = active
@@ -93,7 +93,7 @@ router1.patch('/active_close', auth, async(req, res)=>{
         
         await req.user.save()
         
-        res.send(user)
+        res.send("success")
     }catch(e){
         res.send(e)
     }
