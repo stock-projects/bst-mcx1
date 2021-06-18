@@ -31,19 +31,21 @@ const userSchema = new mongoose.Schema({
             type:Array()
         }
     },
-    portfolio:{
-        Ledger_balance:{
-            type: Number
-        },
-        Active_pl:{
-            type:Number
-        },
-        Margin_available:{
-            type:Number
-        },
-        M2m:{
-            type:Number
-        }
+    Ledger_balance:{
+        type: Number,
+        default: 0
+    },
+    Active_pl:{
+        type:Number,
+        default: 0
+    },
+    Margin_available:{
+        type:Number,
+        default:0
+    },
+    M2m:{
+        type:Number,
+        default:0
     },
     balance:{
         default:100000,
