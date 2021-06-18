@@ -38,6 +38,27 @@ router1.get('/users/me', auth, async (req,res) => {
     res.send(req.user)
 })
 
+
+// to update the portfolio
+router1.get('/portfolio', auth, async (req,res) => {
+    const update = req.body
+    try{
+        
+        req.user.portfolio.Ledger_balance = update.Ledger_balance;
+        req.user.portfolio.Active_pl = update.Active_pl;
+        req.user.portfolio.Margin_available = update.Margin_available;
+        req.user.portfolio.M2m = update.M2m;
+
+        await req.user.save()
+        res.send(req.user);
+
+    }catch(e){
+        res.send(e)
+    }
+
+
+})
+
 // get a particular user from a name 
 router1.get('/users/:name', async(req,res) => {
 
@@ -56,6 +77,7 @@ router1.get('/users/:name', async(req,res) => {
         res.status(400).send(e)
     })
 })
+
 
 // add one purchase of commodity
 router1.post('/active_new', auth,  async(req, res)=>{

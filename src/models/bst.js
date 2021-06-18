@@ -32,7 +32,18 @@ const userSchema = new mongoose.Schema({
         }
     },
     portfolio:{
-        type:Number
+        Ledger_balance:{
+            type: Number
+        },
+        Active_pl:{
+            type:Number
+        },
+        Margin_available:{
+            type:Number
+        },
+        M2m:{
+            type:Number
+        }
     },
     balance:{
         default:100000,
