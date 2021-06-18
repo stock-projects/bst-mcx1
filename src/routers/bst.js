@@ -40,7 +40,7 @@ router1.get('/users/me', auth, async (req,res) => {
 
 
 // to update the portfolio
-router1.get('/portfolio', auth, async (req,res) => {
+router1.post('/portfolio', auth, async (req,res) => {
     const update = req.body
     try{
         
