@@ -44,10 +44,10 @@ router1.get('/portfolio', auth, async (req,res) => {
     const update = req.body
     try{
         
-        req.user.portfolio.Ledger_balance = update.Ledger_balance;
-        req.user.portfolio.Active_pl = update.Active_pl;
-        req.user.portfolio.Margin_available = update.Margin_available;
-        req.user.portfolio.M2m = update.M2m;
+        req.user.Ledger_balance = update.Ledger_balance;
+        req.user.Active_pl = update.Active_pl;
+        req.user.Margin_available = update.Margin_available;
+        req.user.M2m = update.M2m;
 
         await req.user.save()
         res.send(req.user);
