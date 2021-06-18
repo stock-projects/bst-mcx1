@@ -83,7 +83,7 @@ router1.post('/active_close', auth, async(req, res)=>{
     const active = req.body
     try{
         const update = active
-        req.user.trades.Active.push(update)
+        req.user.trades.Closed.push(update)
 
         default_lot_size = update.default_lot_size;
         lot_size = update.lot_size;
